@@ -23,7 +23,7 @@ conn.commit()
 
 @app.route("/")
 def index():
-    return render_template("login.html")
+    return redirect("index.html")
 
 @app.route("/login", methods=["POST"])
 def login():
@@ -36,11 +36,11 @@ def login():
     if user:
         return redirect(url_for("flag"))
     else:
-        return render_template("login.html", message="Invalid credentials")
+        return redirect("index.html", message="Invalid credentials")
 
 @app.route("/flag")
 def flag():
-    return render_template("flag.html")
+    return redirect("flag.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
